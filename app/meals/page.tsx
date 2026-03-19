@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classes from "./page.module.css";
 import MealsGrid from "./meals-grid";
-import { getMeals } from "../../meals";
+import { getMeals } from "../../lib/meals";
 import { Suspense } from "react";
 
 export const Meals = async () => {
