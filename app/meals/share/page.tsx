@@ -1,10 +1,14 @@
+'use client';
+
 import Link from "next/link";
-import React from "react";
+import { useFormState } from "react-dom";
 import classes from "./page.module.css";
 import ImagePicker from "../image-picker";
 import { handleFormSubmit } from "../../../lib/actions";
+import MealsFormSubmit from "../meals-form-submit";
 
 export default function Share() {
+  const [state, formAction] = useFormState(handleFormSubmit, {message: null});
   return (
     <>
       <header className={classes.header}>
@@ -14,7 +18,7 @@ export default function Share() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form} action={handleFormSubmit} method="post">
+        <form className={classes.form} action={formAction} method="post">
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -22,7 +26,7 @@ export default function Share() {
             </p>
             <p>
               <label htmlFor="email">Your email</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" />
             </p>
           </div>
           <p>
@@ -38,13 +42,15 @@ export default function Share() {
             <textarea
               id="instructions"
               name="instructions"
-              rows="10"
+              rows={10}
               required
             ></textarea>
           </p>
           <ImagePicker label="Meal Image" name="image" />
+          {state.message && <p className={classes.error}>{state.message}</p>}
           <p className={classes.actions}>
-            <button type="submit">Share Meal</button>
+            {/* <button type="submit">Share Meal</button> */}
+            <MealsFormSubmit />
           </p>
         </form>
       </main>

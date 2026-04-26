@@ -8,10 +8,20 @@ interface MealImage {
   arrayBuffer(): Promise<ArrayBuffer>;
 }
 
-interface Meal {
+export interface Meal {
   slug?: string;
   title: string;
-  image: MealImage;
+  image: MealImage | string;
+  summary: string;
+  instructions: string;
+  creator: string;
+  creator_email: string;
+}
+
+export interface DatabaseMeal {
+  slug: string;
+  title: string;
+  image: string;
   summary: string;
   instructions: string;
   creator: string;
@@ -20,17 +30,17 @@ interface Meal {
 
 const db = sql("meals.db");
 
-export async function getMeals() {
+export async function getMeals(): Promise<DatabaseMeal[]> {
   await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
   const stmt = db.prepare("SELECT * FROM meals");
-  const meals = stmt.all();
+  const meals = stmt.all() as DatabaseMeal[];
   return meals;
   //throw new Error('loading failed');
 }
 
-export function getMeal(slug: string) {
+export function getMeal(slug: string): DatabaseMeal | undefined {
   const stmt = db.prepare("SELECT * FROM meals WHERE slug = ?");
-  const meal = stmt.get(slug);
+  const meal = stmt.get(slug) as DatabaseMeal | undefined;
   return meal;
   //throw new Error('loading failed');
 }
@@ -38,6 +48,10 @@ export function getMeal(slug: string) {
 export async function saveNewMeal(meal: Meal): Promise<void> {
   meal.slug = slugify(meal.title, { lower: true }); // convter title to slug, lower case
   meal.instructions = xss(meal.instructions); // sanitize instructions to prevent XSS attacks
+
+  if (typeof meal.image === 'string') {
+    throw new Error('Invalid meal image type');
+  }
 
   const extension = meal.image.name.split(".").pop();
   const fileName = `${meal.slug}.${extension}`;

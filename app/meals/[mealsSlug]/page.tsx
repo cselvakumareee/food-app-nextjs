@@ -2,11 +2,11 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import classes from "./page.module.css";
-import { getMeal } from "../../../lib/meals";
+import { getMeal, DatabaseMeal } from "../../../lib/meals";
 import NotFound from "../not-found";
 
-export default async function MealDetailsPage({ params }) {
-  const meal = await getMeal(params.mealsSlug);
+export default async function MealDetailsPage({ params }: { params: { mealsSlug: string } }) {
+  const meal = await getMeal(params.mealsSlug) as DatabaseMeal | undefined;
   console.log({ meal });
   if (!meal) {
     return <NotFound />;
@@ -21,7 +21,7 @@ export default async function MealDetailsPage({ params }) {
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
           <p className={classes.creator}>
-            by <a href={`mailto:${meal.email}`}>{meal.name}</a>
+            by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
           </p>
           <p className={classes.summary}>{meal.summary}</p>
         </div>
