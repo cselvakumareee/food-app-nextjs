@@ -5,6 +5,20 @@ import classes from "./page.module.css";
 import { getMeal, DatabaseMeal } from "../../../lib/meals";
 import NotFound from "../not-found";
 
+export const generateMetadata = async ({ params }: { params: { mealsSlug: string } }) => {
+  const meal = await getMeal(params.mealsSlug) as DatabaseMeal | undefined;
+  if (!meal) {
+    return {
+      title: "Meal Not Found",
+      description: "The requested meal could not be found.",
+    };
+  }
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+};
+
 export default async function MealDetailsPage({ params }: { params: { mealsSlug: string } }) {
   const meal = await getMeal(params.mealsSlug) as DatabaseMeal | undefined;
   console.log({ meal });

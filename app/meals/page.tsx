@@ -8,7 +8,12 @@ const Meals = async () => {
   const meals = await getMeals();
   return <MealsGrid meals={meals} />;
 };
-
+//add meta data for the page
+export const metadata = {
+  title: "Meals - Delicious Recipes",
+  description:
+    "Discover delicious meals created by our community. Choose your favorite recipe and cook it yourself. It is easy and fun!",
+};
 export default async function MealsPage() {
   return (
     <>

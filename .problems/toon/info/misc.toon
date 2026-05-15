@@ -1,0 +1,108 @@
+generatedAt: "2026-05-15T13:14:19.022Z"
+rule: misc
+count: 10
+details:
+  code: "7016"
+  source: ts
+  path: "c:\\Users\\selva\\Handson\\Nextjs\\food-app-nextjs"
+occurrences[10]:
+  - key: "app/meals/[mealsSlug]/page.tsx:8:15:8"
+    file: "app/meals/[mealsSlug]/page.tsx"
+    line: 9
+    textRange:
+      startLine: 9
+      endLine: 9
+      startOffset: 15
+      endOffset: 46
+    message: 'await' has no effect on the type of this expression.
+    severity: INFO
+  - key: "app/meals/meals-form-submit.tsx:4:30:6"
+    file: app/meals/meals-form-submit.tsx
+    line: 5
+    textRange:
+      startLine: 5
+      endLine: 5
+      startOffset: 30
+      endOffset: 41
+    message: "Could not find a declaration file for module 'react-dom'. 'c:/Users/selva/Handson/Nextjs/food-app-nextjs/node_modules/react-dom/index.js' implicitly has an 'any' type.\n  Try `npm i --save-dev @types/react-dom` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-dom';`"
+    severity: INFO
+  - key: "app/meals/share/page.tsx:2:0:4"
+    file: app/meals/share/page.tsx
+    line: 3
+    textRange:
+      startLine: 3
+      endLine: 3
+      startOffset: 0
+      endOffset: 29
+    message: 'Link' is declared but its value is never read.
+    severity: INFO
+  - key: "app/meals/share/page.tsx:3:29:5"
+    file: app/meals/share/page.tsx
+    line: 4
+    textRange:
+      startLine: 4
+      endLine: 4
+      startOffset: 29
+      endOffset: 40
+    message: "Could not find a declaration file for module 'react-dom'. 'c:/Users/selva/Handson/Nextjs/food-app-nextjs/node_modules/react-dom/index.js' implicitly has an 'any' type.\n  Try `npm i --save-dev @types/react-dom` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-dom';`"
+    severity: INFO
+  - key: "initdb.ts:0:12:9"
+    file: initdb.ts
+    line: 1
+    textRange:
+      startLine: 1
+      endLine: 1
+      startOffset: 12
+      endOffset: 37
+    message: 'require' call may be converted to an import.
+    severity: INFO
+  - key: "lib/actions.ts:6:39:1"
+    file: lib/actions.ts
+    line: 7
+    textRange:
+      startLine: 7
+      endLine: 7
+      startOffset: 39
+      endOffset: 48
+    message: 'prevState' is declared but its value is never read.
+    severity: INFO
+  - key: "lib/actions.ts:6:50:2"
+    file: lib/actions.ts
+    line: 7
+    textRange:
+      startLine: 7
+      endLine: 7
+      startOffset: 50
+      endOffset: 58
+    message: "Parameter 'formData' implicitly has an 'any' type, but a better type may be inferred from usage."
+    severity: INFO
+  - key: "lib/actions.ts:6:39:0"
+    file: lib/actions.ts
+    line: 7
+    textRange:
+      startLine: 7
+      endLine: 7
+      startOffset: 39
+      endOffset: 48
+    message: "Parameter 'prevState' implicitly has an 'any' type, but a better type may be inferred from usage."
+    severity: INFO
+  - key: "lib/actions.ts:8:23:3"
+    file: lib/actions.ts
+    line: 9
+    textRange:
+      startLine: 9
+      endLine: 9
+      startOffset: 23
+      endOffset: 27
+    message: "Parameter 'text' implicitly has an 'any' type, but a better type may be inferred from usage."
+    severity: INFO
+  - key: "lib/meals.ts:0:16:7"
+    file: lib/meals.ts
+    line: 1
+    textRange:
+      startLine: 1
+      endLine: 1
+      startOffset: 16
+      endOffset: 32
+    message: "Could not find a declaration file for module 'better-sqlite3'. 'c:/Users/selva/Handson/Nextjs/food-app-nextjs/node_modules/better-sqlite3/lib/index.js' implicitly has an 'any' type.\n  Try `npm i --save-dev @types/better-sqlite3` if it exists or add a new declaration (.d.ts) file containing `declare module 'better-sqlite3';`"
+    severity: INFO
